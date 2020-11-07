@@ -1,0 +1,12 @@
+.logo {
+  width: 100%;
+  padding: 0 20px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.logo_png {
+  width: 215px;
+  height: 215px;
+  border-radius: 50%;
+}

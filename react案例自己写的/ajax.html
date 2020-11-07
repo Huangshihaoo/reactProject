@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<div class="box"></div>
+
+    <script src="./js/react.js"></script>
+    <script src="./js/react-dom.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.20.0-0/axios.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/fetch/3.4.0/fetch.js"></script>
+    <script type='text/babel'>
+
+        class App extends React.Component {
+
+            constructor (props) {
+                super (props);
+                this.state = {
+                    uuurl : null
+                }
+            }
+
+            componentDidMount () {
+                let url = 'https://api.github.com/users/octocat/gists'
+                // axios.get(url)
+                    // .then((response) => {
+                    //     let {data} = response;
+                    //     this.setState({
+                    //         uuurl : data[0].html_url
+                    //     })
+                    // })
+                    // .catch((error) => {})
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        this.setState({
+                            uuurl : data[0].html_url
+                        })
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    })
+            }
+
+            render () {
+                let{ uuurl} = this.state
+                if(!uuurl) {
+                     return <div>请等一下</div>
+                } else {
+                    return <div>拿到 <a href={uuurl}>链接</a> 了</div>
+                }
+               
+            }
+        }
+
+        ReactDOM.render(<App />,document.querySelector('.box'))
+
+    </script>
+</body>
+</html>

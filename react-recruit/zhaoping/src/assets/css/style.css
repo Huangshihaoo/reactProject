@@ -1,0 +1,87 @@
+/* 出去头部和尾部的盒子 */
+.box {
+    padding: 40px 0 50px;
+    /* height: 600px; */
+}
+
+/* 底部定位 */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* 头部定位 */
+.head {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+/* 左对话框部分 */
+.left {
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.left img {
+    display: block;
+    float: left;
+}
+
+.left .leftDialogue {
+    float: left;
+    position: relative;
+    margin-left: 15px;
+    background-color: lawngreen;
+    padding: 10px 10px;
+    border-radius: 6px;
+    max-width: 200px;
+    white-space: break-word;
+}
+
+.left .leftDialogue::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: -5px;
+    border-top: 10px solid lawngreen;
+    border-left: 10px solid lawngreen;
+    transform: rotate(-45deg);
+    z-index: 0;
+}
+/* 左对话框部分结束 */
+
+/* 右对话框部分 */
+.right {
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.right img {
+    float: right;
+}
+
+.right .rightDialogue {
+    float: right;
+    position: relative;
+    margin-right: 15px;
+    background-color: #ccc;
+    padding: 10px 10px;
+    border-radius: 6px;
+    max-width: 200px;
+    white-space: break-word;
+}
+
+.right .rightDialogue::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    right: -5px;
+    border-top: 10px solid #ccc;
+    border-left: 10px solid #ccc;
+    transform: rotate(-45deg);
+    z-index: 0;
+}
+
+/* 右对话框部分结束 */

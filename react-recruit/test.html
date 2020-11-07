@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="module">
+   import axios from 'axios'
+
+function ajax(url, data = {xx: '11fsd', yy: '22rwerer',zz: '22rwerer',sx: '22rwerer'}, method = 'GET') {
+    
+    if(method === "GET") {
+          let getUrl = ''
+       let dataKey = Object.keys(data);
+       dataKey.forEach(item => {
+        getUrl += item + '='+ data[item] + '&'
+       });
+       getUrl ='?' + getUrl.substr(0, getUrl.length-1)
+       url += getUrl
+       return axios.get(url)
+    }else {
+        return axios.post(url,data)
+    }
+}
+ajax('https://api.github.com/search/users',{q:'xx'})
+  </script>
+</body>
+</html>

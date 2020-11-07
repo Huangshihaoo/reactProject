@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="box"></div>
+
+    <script src="./js/react.js"></script>
+    <script src="./js/react-dom.js"></script>
+    <script src="./js/babel.min.js"></script>
+
+    <script type="text/babel">
+    
+    class Change extends React.Component {
+        constructor (props) {
+            super(props);
+
+            this.state = {
+                opacity :1
+            }
+        }
+
+        componentDidMount() {
+            let {opacity} = this.state
+            setInterval(() => {
+                opacity -= 0.02
+                if(opacity <0.1) {
+                    opacity = 1
+                }
+                this.setState({opacity})
+            },100)
+        }
+
+        render () {
+            let {opacity} = this.state
+            return (
+                <div style={{opacity}}>变变变</div>
+            )
+        }
+    }
+
+    ReactDOM.render(<Change />,document.querySelector('.box'))
+    
+    </script>
+</body>
+</html>

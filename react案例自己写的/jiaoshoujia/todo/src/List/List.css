@@ -1,0 +1,36 @@
+ul {
+    float: left;
+    margin: 0;
+    list-style: none;
+    width: 500px;
+}
+
+ul>p {
+    font-size: 20px;
+}
+
+ul>li {
+    height: 80px;
+    position: relative;
+    border: 1px solid #000;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+ul>li>p {
+    margin: 0;
+    padding: 0;
+    margin-left: 60px;
+}
+
+ul>li>button {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    background: none;
+    outline: none;
+    border: 1px solid #2a27c4;
+    color: #2a27c4;
+    font-weight: 600;
+    margin: 0;
+}

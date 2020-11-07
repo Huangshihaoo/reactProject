@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="box"></div>
+
+    <script src="./js/react.js"></script>
+    <script src="./js/react-dom.js"></script>
+    <script src="./js/babel.min.js"></script>
+
+    <script type="text/babel">
+        /* 1. 拆分组件: 拆分界面, 抽取组件 
+        * 单个标题组件: Welcome 
+        * 应用组件: App 2. 分析确定传递数据和数据类型 
+        * Welcome: props.name string 
+        * App: props.names array 
+        */ 
+        class App extends React.Component {
+            render() {
+                let {arr} = this.props;
+                return (
+                    <div>
+                        {
+                            arr.map((item,index)=>{
+                                return <Welcome key={index} xxx={item} /> 
+                            })
+                        }
+                    </div>
+                );
+        } } 
+
+        function Welcome(props){ // 声明式依赖注入 
+        return <h2>{props.xxx}</h2>
+        };
+
+        let arr = [111,222,333];
+
+        ReactDOM.render(<App arr={arr} />,document.getElementById('box'));
+
+
+    </script>
+
+</body>
+
+</html>

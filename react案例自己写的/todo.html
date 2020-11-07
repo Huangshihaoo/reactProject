@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="todo"></div>
+
+    <script src="./js/react.js"></script>
+    <script src="./js/react-dom.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script type="text/babel">
+    // 主组件 App
+    class App extends React.Component {
+        constructor (oeops) {
+            super(oeops);
+            this.state = {
+                todos : ['吃饭','睡觉','打豆豆']
+            }
+            this.add = this.add.bind(this)
+        };
+
+        add (text) {
+            let {todos} = this.state
+            todos.unshift(text);
+            this.setState({todos})
+        };
+        render () {
+            // 解构赋值形式取值
+            let {todos}= this.state
+        /**
+        <AddTodo Add={this.add}
+         将方法当参数传进去在他内部的点击事件中调用
+            调用时将所需参数以形参的方式传到主组件定义的方法中
+             length={todos.length} />
+
+        */
+            return (
+                <div>
+                    <h3>我是土豆</h3>
+                    <AddTodo Add={this.add} length={todos.length} />
+                    <TodoList todos={todos} />
+                </div>
+            )
+        }
+    }
+
+    // 增加文本组件
+    class AddTodo extends React.Component { 
+
+        constructor (oeops) {
+            super(oeops);
+            // 改变this指向
+            this.addList = this.addList.bind(this);
+        };
+        // 点击事件
+        addList() {
+            // 获取文本去空格
+            let text = this.refs.txt.value.trim();
+            
+            if(!text) {
+                window.alert('请输入文本');
+                return;
+            }
+            this.props.Add(text);
+            this.refs.txt.value = '';
+        }
+        
+        render () {
+            return (
+                <div>
+                    <input ref='txt' type="text" />
+                    <button onClick={this.addList} >Add #{this.props.length}</button>
+                </div>
+            )
+        };
+    }
+
+    // 显示文本的todolist组件
+    class TodoList extends React.Component {
+        render () {
+            let todos = this.props.todos
+            return (
+                <ul>
+                    {
+                        todos.map((item,index) => <li key={index}>{item}</li> )
+                    }
+                </ul>
+            )
+        }
+    }
+    
+    // 将主组件插入
+    ReactDOM.render(<App />,document.querySelector('#todo'))
+
+    </script>
+</body>
+</html>

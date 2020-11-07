@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    
+    <script src="./js/react.js"></script>
+    <script src="./js/react-dom.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script type="text/babel">
+        
+
+
+        function MyCom (){
+            return <h1>工厂函数</h1>
+        };
+
+        class MyCom2 extends React.Component {
+            render() {
+                return <h2>类创建</h2>
+            }
+        }
+        
+
+        ReactDOM.render(<MyCom/>,document.querySelector('.box1'));
+
+        ReactDOM.render(<MyCom2/>,document.querySelector('.box2'));
+  
+
+    </Script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <div class="box"></div>
+
+    <script src="./js/react.js"></script>
+    <script src="./js/react-dom.js"></script>
+    <script src="./js/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        // 定义组件
+        class App extends React.Component {
+
+            constructor(props){
+                super(props);
+                this.myClick = this.myClick.bind(this);
+                
+               
+
+            }
+            myClick() {
+                window.alert(this.refs.msg.value)
+            }
+
+            myBlur(event) {
+                window.alert(event.target.value)
+            }
+
+            render() {
+                return (
+                    <div>
+                        <input ref='msg' type="text" />
+                        <button onClick={this.myClick} >弹出</button>
+                        <input type="text" onBlur={this.myBlur} placeholder="失去焦点弹出" />
+                    </div>
+                );
+            }
+        }
+
+ReactDOM.render(<App />,document.querySelector('.box'));
+
+    </script>
+
+</body>
+</html>

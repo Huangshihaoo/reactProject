@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="box">
+
+    </div>
+
+    <script src="./js/react.js"></script>
+    <script src="./js/react-dom.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script type="text/babel">
+
+        let arr = ['lll','iii','jjj'];
+         ReactDOM.render(
+        <ul>
+            {
+                arr.map((item,index) => { 
+                    return <li key={index}> {item} </li> 
+                    
+                })
+            }
+        </ul>
+        ,document.querySelector('.box'))
+
+    </script>
+</body>
+
+</html>
